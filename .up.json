@@ -1,0 +1,9 @@
+{
+  "project": "example",
+    "port": "3444:80",
+    "db": {
+        "type": "mysql",
+        "name": "symfony",
+        "pass": ""
+    }
+}
