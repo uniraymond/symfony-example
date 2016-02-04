@@ -1,0 +1,15 @@
+*.md
+index.html
+LICENSE
+vendor/
+web/bundles/
+/app/bootstrap*
+/app/cache
+/app/logs
+/app/config/parameters.ini
+bin/*
+web/js
+web/css
+web/images
+web/upload*
+composer.phar

@@ -1,0 +1,23 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+    app.mailer.transport:    sendmail
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+  #example_app.service.security:
+  #class: AppBundle/Service/SecurityService
+
+  example_app.service.name:
+      class: AppBundle\Service\NameService
+      arguments:
+        - "@session"
+
+  example_app.service.sendemail.name:
+      class: AppBundle\Service\EmailService
+      arguments:
+        - "@mailer"

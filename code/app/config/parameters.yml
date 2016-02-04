@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony-example
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: email-smtp.us-east-1.amazonaws.com
+    mailer_user: AKIAIHCF2D7XIONYA4ZQ
+    mailer_password: Aol/infNaMnHNoYJF8wAH+/YXcvsB9A5lAbOvdsmzhWi
+    secret: ThisTokenIsNotSoSecretChangeIt
