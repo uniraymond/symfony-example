@@ -1,10 +1,10 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: 127.0.0.1
+    database_host: example-db
     database_port: null
-    database_name: symfony-example
-    database_user: root
-    database_password: null
+    database_name: symfony_example
+    database_user: admin
+    database_password: security
     mailer_transport: smtp
     mailer_host: email-smtp.us-east-1.amazonaws.com
     mailer_user: AKIAIHCF2D7XIONYA4ZQ
