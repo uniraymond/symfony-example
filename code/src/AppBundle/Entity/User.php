@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * Class User
+ * Class user
  * @package AppBundle\Entity
  * @author Raymond F. <raymond@studionone.com.au>
  *
@@ -42,7 +42,7 @@ class User
 
     /**
      * @ORM\OneToMany(
-     *      targetEntity="Task",
+     *      targetEntity="task",
      *      mappedBy="user",
      *      orphanRemoval=true
      * )

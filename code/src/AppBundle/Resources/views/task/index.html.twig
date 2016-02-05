@@ -1,0 +1,53 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundle/app/css/task.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block content %}
+    <h1>Task List</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Tag</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+                <tr class="{{ cycle(['even', 'odd'], loop.index) }}">
+                    <td><input id="task_{{ entity.id }}" type="checkbox" {% if (entity.status) %} checked {% endif %} value="{{ entity.status }}" /> </td>
+                    <td>{{ entity.id }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.tag }}</td>
+                    <td>
+                        <a href="{{ path('task_delete', {'id': entity.id}) }}">
+                            Remove
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block body %}
+    <div id="new_task_form">
+        {{ include('AppBundle:task:new.html.twig') }}
+    </div>
+    <div class="clear-fix"></div>
+    <div class="block">
+        <a href="{{ path('task_new') }}" class="btn btn-primary pull-right">
+            Create a new task
+        </a>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ asset('bundle/app/js/index.js') }}"></script>
+{% blockend %}

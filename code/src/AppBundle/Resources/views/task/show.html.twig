@@ -1,0 +1,33 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundle/app/css/show.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block content %}
+    <div class="task_body">
+        <h1>Show Task {{ entity.name }}</h1>
+
+        <div>
+            {{ entity.tag }}
+        </div>
+        <div class="task_content">
+            {{ entity.content }}
+        </div>
+        <div>
+            {{ entity.startat|date('d-m-Y H:i:s') }}
+        </div>
+        <div>
+            {{ entity.finishat|date('d-m-Y H:i:s') }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="block">
+        <a href="{{ path('task_new') }}" class="btn btn-primary pull-right">
+            Create a new task
+        </a>
+    </div>
+{% endblock %}

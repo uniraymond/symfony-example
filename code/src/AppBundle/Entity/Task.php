@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
- * Class Task
+ * Class task
  * @package AppBundle\Entity
  * @author Raymond F. <raymond@studionone.com.au>
  *
@@ -190,9 +190,7 @@ class Task
      */
     public function setStartAt($startAt)
     {
-        if (!$this->getStartAt()) {
-            $this->startAt = new \DateTime();
-        }
+        $this->startAt = $startAt;
 
         return $this;
     }
@@ -210,7 +208,7 @@ class Task
     /**
      * Set finishAt
      *
-     * @param string $finishAt
+     * @param \DateTime $finishAt
      * @return Task
      */
     public function setFinishAt($finishAt)
@@ -225,103 +223,11 @@ class Task
     /**
      * Get finishAt
      *
-     * @return string 
+     * @return \DateTime 
      */
     public function getFinishAt()
     {
         return $this->finishAt;
-    }
-
-    /**
-     * Set contnet
-     *
-     * @param string $contnet
-     * @return Task
-     */
-    public function setContnet($contnet)
-    {
-        $this->contnet = $contnet;
-
-        return $this;
-    }
-
-    /**
-     * Get contnet
-     *
-     * @return string 
-     */
-    public function getContnet()
-    {
-        return $this->contnet;
-    }
-
-    /**
-     * Set commont
-     *
-     * @param string $commont
-     * @return Task
-     */
-    public function setCommont($commont)
-    {
-        $this->commont = $commont;
-
-        return $this;
-    }
-
-    /**
-     * Get commont
-     *
-     * @return string 
-     */
-    public function getCommont()
-    {
-        return $this->commont;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \AppBundle\Entity\User $user
-     * @return Task
-     */
-    public function setUser(\AppBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \AppBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Task
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
     }
 
     /**
@@ -370,5 +276,74 @@ class Task
     public function getUpdatedById()
     {
         return $this->updatedById;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Task
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set commont
+     *
+     * @param string $commont
+     * @return Task
+     */
+    public function setCommont($commont)
+    {
+        $this->commont = $commont;
+
+        return $this;
+    }
+
+    /**
+     * Get commont
+     *
+     * @return string 
+     */
+    public function getCommont()
+    {
+        return $this->commont;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Task
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

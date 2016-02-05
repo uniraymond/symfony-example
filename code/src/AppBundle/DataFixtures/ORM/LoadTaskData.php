@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: raymond
+ * user: raymond
  * Date: 4/02/2016
  * Time: 5:15 PM
  */
@@ -28,7 +28,7 @@ class LoadTaskData extends AbstractFixture implements FixtureInterface, OrderedF
         $task1->setUser($manager->merge($this->getReference('user_one')));
         $task1->setName('Setup Computer');
         $task1->setStatus(4);
-        $task1->setTag('Task A');
+        $task1->setTag('task A');
         $task1->setStartAt(new \DateTime('-3 days'));
         $task1->setFinishAt(new \DateTime('-2 days'));
         $task1->setContent('Setup the new computer!');
@@ -37,7 +37,7 @@ class LoadTaskData extends AbstractFixture implements FixtureInterface, OrderedF
         $task2->setUser($manager->merge($this->getReference('user_two')));
         $task2->setName('Install all software as required');
         $task2->setStatus(5);
-        $task1->setTag('Task B');
+        $task1->setTag('task B');
         $task2->setStartAt(new \DateTime('-2 days'));
         $task2->setFinishAt(new \DateTime('-1 days'));
         $task2->setContent('Install all software for the new computere');
@@ -46,7 +46,7 @@ class LoadTaskData extends AbstractFixture implements FixtureInterface, OrderedF
         $task3->setName('Setup Table');
         $task3->setUser($manager->merge($this->getReference('user_three')));
         $task3->setStatus(3);
-        $task1->setTag('Task A');
+        $task1->setTag('task A');
         $task3->setStartAt(new \DateTime('-1 days'));
         $task3->setFinishAt(new \DateTime());
         $task3->setContent('Install tables for the computer!');
@@ -55,7 +55,7 @@ class LoadTaskData extends AbstractFixture implements FixtureInterface, OrderedF
         $task4->setName('Prepare the stationary for staffs');
         $task4->setUser($manager->merge($this->getReference('user_one')));
         $task4->setStatus(2);
-        $task1->setTag('Task A');
+        $task1->setTag('task A');
         $task4->setStartAt(new \DateTime('+2 days'));
         $task4->setFinishAt(new \DateTime('+3 days'));
         $task4->setContent('Collect all stationary for staffs!');
@@ -64,7 +64,7 @@ class LoadTaskData extends AbstractFixture implements FixtureInterface, OrderedF
         $task5->setUser($manager->merge($this->getReference('user_three')));
         $task5->setName('Grab chair for staff');
         $task5->setStatus(1);
-        $task1->setTag('Task C');
+        $task1->setTag('task C');
         $task5->setStartAt(new \DateTime('+4 days'));
         $task5->setFinishAt(new \DateTime('+5 days'));
         $task5->setContent('Get chair for staff!');
