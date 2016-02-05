@@ -26,7 +26,11 @@ class taskType extends AbstractType
                     'Finish'  => 1
                 ),
                 'choices_as_values' => true))
-            ->add('user')
+            ->add('user', 'entity', array(
+                'class' => 'AppBundle\Entity\User',
+                'choice_label' => 'Fname',
+                'empty_value' => 'Select ...'
+            ))
             ->add('tag')
             ->add('content')
             ->add('save', SubmitType::class, array(
