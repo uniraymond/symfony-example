@@ -1,10 +1,3 @@
-{% extends 'AppBundle::layout.html.twig' %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundle/app/css/new.css') }}" type="text/css" media="all" />
-{% endblock %}
-
 {% block content %}
     <div class="task_body">
         <h3>New Task</h3>
@@ -53,13 +46,5 @@
                 </div>
             </form>
         </div>
-    </div>
-{% endblock %}
-
-{% block body %}
-    <div class="block">
-        <a href="{{ path('task_list') }}" class="btn btn-primary">
-            Go back to list
-        </a>
     </div>
 {% endblock %}
