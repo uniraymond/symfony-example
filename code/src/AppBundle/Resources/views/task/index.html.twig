@@ -37,12 +37,12 @@
 {% endblock %}
 
 {% block body %}
-    <div id="new_task_form">
+    <div id="task_new_form" style="display: none;"">
         {{ include('AppBundle:task:new.html.twig') }}
     </div>
     <div class="clear-fix"></div>
     <div class="block">
-        <a href="{{ path('task_new') }}" class="btn btn-primary pull-right">
+        <a href="#" class="btn btn-primary pull-right" id="task_new_btn" onclick="addNewTaskForm()">
             Create a new task
         </a>
     </div>

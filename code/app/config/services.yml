@@ -21,3 +21,8 @@ services:
       class: AppBundle\Service\EmailService
       arguments:
         - "@mailer"
+
+  example_app.service.task.save:
+      class: AppBundle\Service\TaskService
+      arguments:
+        -
