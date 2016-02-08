@@ -22,7 +22,7 @@ services:
       arguments:
         - "@mailer"
 
-  example_app.service.task.save:
+  example_app.service.task:
       class: AppBundle\Service\TaskService
       arguments:
-        -
+        - "@doctrine.orm.entity_manager"

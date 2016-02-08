@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Task;
 use AppBundle\Form\taskType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class TaskController
@@ -65,21 +66,21 @@ Class TaskController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user_id = $request->request->get('task[user]');
         $task = new Task();
         $form = $this->createForm(new TaskType(), $task);
-
         $form->handleRequest($request);
 
         if (!$form->isSubmitted() || !$form->isValid()) {
             throw $this->createNotFoundException('No data has been submitted');
         }
 
-        return $this->render('AppBundle:Task:new.html.twig',
-                array(
-                    'entity' => $task,
-                    'form' => $form->createView()
-            ));
+        //use task service to do the save form and return array.
+        $taskService = $this->get('example_app.service.task');
+        $savedTask = $taskService->addTask($task);
+
+        $response = new Response(json_encode($savedTask));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -102,15 +103,16 @@ Class TaskController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/task/delete/{id}", name="task_delete")
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
+        $taskService = $this->get('example_app.service.task');
+        $deleteTask = $taskService->deleteTask($id);
+
         $task = new Task();
         $form = $this->createForm(new TaskType(), $task);
 
-        return $this->render('AppBundle:Task:new.html.twig',
-                array(
-                    'entity' => $task,
-                    'form' => $form->createView()
-            ));
+        $response = new Response(json_encode(array('id'=>$id)));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 }

@@ -8,7 +8,7 @@
 {% block content %}
     <h1>Task List</h1>
 
-    <table class="table">
+    <table class="table" id="task_table_list">
         <thead>
             <tr>
                 <th>Status</th>
@@ -20,13 +20,13 @@
         </thead>
         <tbody>
             {% for entity in entities %}
-                <tr class="{{ cycle(['even', 'odd'], loop.index) }}">
+                <tr class="{{ cycle(['even', 'odd'], loop.index) }}" id="task_list_tr_{{ entity.id }}">
                     <td><input id="task_{{ entity.id }}" type="checkbox" {% if (entity.status) %} checked {% endif %} value="{{ entity.status }}" /> </td>
                     <td>{{ entity.id }}</td>
                     <td>{{ entity.name }}</td>
                     <td>{{ entity.tag }}</td>
                     <td>
-                        <a href="{{ path('task_delete', {'id': entity.id}) }}">
+                        <a href="#" onclick="deleteTask('{{ path('task_delete', {'id': entity.id}) }}'); return false;" >
                             Remove
                         </a>
                     </td>
