@@ -21,7 +21,12 @@
         <tbody>
             {% for entity in entities %}
                 <tr class="{{ cycle(['even', 'odd'], loop.index) }}" id="task_list_tr_{{ entity.id }}">
-                    <td><input id="task_{{ entity.id }}" type="checkbox" {% if (entity.status) %} checked {% endif %} value="{{ entity.status }}" /> </td>
+                    <td>
+                        <input id="task_{{ entity.id }}"
+                               type="checkbox" {% if (entity.status) %} checked {% endif %}
+                               value="{{ entity.status }}"
+                               onclick="updateTaskStatus('{{ path('task_update_status', {'id': entity.id}) }}', {{ entity.id }}); return false;"/>
+                    </td>
                     <td>{{ entity.id }}</td>
                     <td>{{ entity.name }}</td>
                     <td>{{ entity.tag }}</td>

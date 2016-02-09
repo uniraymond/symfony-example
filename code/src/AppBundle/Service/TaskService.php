@@ -11,14 +11,18 @@ namespace AppBundle\Service;
 
 use Symfony\Component\BrowserKit\Request;
 use Doctrine\ORM\EntityManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 class TaskService
 {
     protected $em;
+    protected $route;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, Router $route)
     {
         $this->em = $em;
+        $this->route = $route;
     }
 
     /**
@@ -37,7 +41,9 @@ class TaskService
                 'checked' => $checked,
                 'name' => $task->getName(),
                 'status' => $task->getStatus(),
-                'tag' => $task->getTag()
+                'tag' => $task->getTag(),
+                'removeUrl' => $this->route->generate('task_delete', array('id'=>$task->getId()),false),
+                'updateStatusUrl' => $this->route->generate('task_update_status', array('id'=>$task->getId()), false)
             );
     }
 
@@ -57,8 +63,20 @@ class TaskService
         return;
     }
 
-    public function changeTaskStatus($id, $request)
+    /**
+     * @param $id
+     * @param $status
+     */
+    public function changeTaskStatus($id, $status)
     {
+        $entity = $this->em->getRepository('AppBundle:Task')->find($id);
+        if (!$entity) {
+            throw $this->createNoteFoundException('Unable to find the task');
+        }
 
+        $entity->setStatus($status);
+        $this->em->flush();
+
+        return;
     }
 }

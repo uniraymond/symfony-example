@@ -84,7 +84,7 @@ Class TaskController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Route("/task/create", name="task_create")
      */
     public function createAction(Request $request)
@@ -100,18 +100,33 @@ Class TaskController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Route("/task/delete/{id}", name="task_delete")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
         $taskService = $this->get('example_app.service.task');
-        $deleteTask = $taskService->deleteTask($id);
-
-        $task = new Task();
-        $form = $this->createForm(new TaskType(), $task);
+        $taskService->deleteTask($id);
 
         $response = new Response(json_encode(array('id'=>$id)));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route("task/updatestatus/{id}", name="task_update_status")
+     */
+    public function updateStatusAction(Request $request)
+    {
+        $task = new Task();
+        $taskService = $this->get('example_app.service.task');
+        $id = $request->request->get('id');
+        $status = $request->request->get('status');
+        $taskService->changeTaskStatus($id, $status);
+
+        $response = new Response(json_encode(array('id'=>$id, 'status'=>$status)));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }

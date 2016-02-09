@@ -54,7 +54,7 @@ class User
      */
     public function __construct()
     {
-        $this->task = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->task = new ArrayCollection();
     }
 
     /**

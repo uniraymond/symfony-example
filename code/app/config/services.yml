@@ -26,3 +26,4 @@ services:
       class: AppBundle\Service\TaskService
       arguments:
         - "@doctrine.orm.entity_manager"
+        - "@router"
